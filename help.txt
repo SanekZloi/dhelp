@@ -1,0 +1,1085 @@
+index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта</title>
+	<!-- Подключение файла стилей -->
+	
+	<link rel="stylesheet" type="text/css" href="./style/style.css">
+</head>
+<body>
+		<!-- Верхнее меню сайта -->
+		<nav>
+			<div class="logo-container">
+			  <img src="images/logo.png" alt="Описание логотипа">
+			</div>
+			<ul>
+			  <li><a href="about.html">О нас</a></li>
+			  <li><a href="catalog.html">Каталог</a></li>
+			  <li><a href="contacts.html">Контакты</a></li>
+			  <li><a href="login.html">Вход</a></li>
+			  <li><a href="register.html">Регистрация</a></li>
+			  <?include ('li.php');?>
+			</ul>
+		  </nav>
+
+		<!-- Хэдер сайта -->
+		<header>
+			<h1>Название магазина</h1>
+			<p>Описание магазина</p>
+		</header>
+
+	<!-- Слайдер новых товаров -->
+	<section>
+		<div class="carousel-3d" data-gap="20">
+			<figure>
+				<div>
+					<a href="#any"><img src="images/new_product_1.jpg" alt=""/>
+						<section class = "text">
+							<h1>Инфо</h1>
+							<p>описание</p>
+						</section></a>
+				</div>
+				<div><a href="#any"><img src="images/new_product_2.jpg" alt=""/>
+				  <section class = "text">
+					<h1>Инфо</h1>
+					<p>описание</p>
+						</section></a>
+				</div>
+				<div><a href="#any"><img src="images/new_product_3.jpg" alt=""/>
+				  <section class = "text">
+					<h1>Инфо</h1>
+					<p>описание</p>
+						</section></a>
+				</div>
+				<div><a href="#any"><img src="images/new_product_4.jpg" alt=""/>
+				  <section class = "text">
+					<h1>Инфо</h1>
+					<p>описание</p>
+						</section></a>
+				</div>
+				<div><a href="#any"><img src="images/new_product_5.jpg" alt=""/>
+				  <section class = "text">
+					<h1>Инфо</h1>
+					<p>описание</p>
+						</section></a>
+				</div>
+			</figure>
+			<nav>
+				<button class="nav prev">Назад</button>
+				<button class="nav next">Вперед</button>
+			</nav>
+	</section>
+
+	<!-- Секция с изображениями товаров -->
+	<section>
+		<h2>Товары</h2>
+		<div class="product-grid">
+			<!-- Карточки товаров -->
+				<div class="product">
+			<img src="images/product_1.jpg" alt="Описание товара 1">
+			<p>Название товара 1</p>
+			<p>Цена: 1000 руб.</p>
+		</div>
+		<div class="product">
+			<img src="images/product_2.jpg" alt="Описание товара 2">
+			<p>Название товара 2</p>
+			<p>Цена: 2000 руб.</p>
+		</div>
+		<div class="product">
+			<img src="images/product_3.jpg" alt="Описание товара 3">
+			<p>Название товара 3</p>
+			<p>Цена: 3000 руб.</p>
+		</div>
+		<div class="product">
+			<img src="images/product_4.jpg" alt="Описание товара 4">
+			<p>Название товара 4</p>
+			<p>Цена: 4000 руб.</p>
+		</div>
+		<div class="product">
+			<img src="images/product_5.jpg" alt="Описание товара 5">
+			<p>Название товара 5</p>
+			<p>Цена: 5000 руб.</p>
+		</div>
+		<div class="product">
+			<img src="images/product_6.jpg" alt="Описание товара 6">
+			<p>Название товара 6</p>
+			<p>Цена: 6000 руб.</p>
+		</div>
+		</div>
+</section>
+<!-- Футер сайта -->
+<footer>
+	<p>Название магазина &copy; 2023</p>
+</footer>
+
+<!-- Подключение файла скриптов -->
+<script src="script.js"></script>
+<script src="carusel.js"></script>
+</body>
+</html>
+
+
+
+
+li.php
+
+<?
+session_start();
+if(isset($_SESSION['user_id'])){
+    echo '<li><a>'.$_SESSION['UserName'].'</a></li>';
+}
+if(!isset($_SESSION['user_id'])){
+    echo '<li><a href="login.html">Вход</a></li>
+    <li><a href="register.html">Регистрация</a></li>';
+}
+?>
+
+
+
+
+
+register.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Регистрация</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="login.html">Вход</a></li>
+		</ul>
+	</nav>
+
+    <!-- Секция с формой регистрации -->
+	<section class="registration-section">
+<h2>Регистрация нового пользователя</h2>
+<form action="reg.php" method="POST">
+<label for="first_name">Имя:</label><br>
+<input type="text" id="first_name" name="first_name" required><br>
+<label for="last_name">Фамилия:</label><br>
+		<input type="text" id="last_name" name="last_name" required><br>
+
+		<label for="email">E-mail:</label><br>
+		<input type="email" id="email" name="email" required><br>
+
+		<label for="password">Пароль:</label><br>
+		<input type="password" id="password" name="password" required><br>
+
+		<label for="confirm-password">Подтвердите пароль:</label><br>
+		<input type="password" id="confirm-password" name="confirm-password" required><br>
+
+		<button type="submit">Зарегистрироваться</button>
+	</form>
+</section>
+
+<!-- Футер сайта -->
+<footer>
+	<p>Название магазина &copy; 2023</p>
+</footer>
+
+<!-- Подключение файла скриптов -->
+
+</body> 
+</html>
+
+
+
+
+
+
+reg.php
+
+<?php
+if(isset($_POST['email'])) {
+    // Очистка пользовательского ввода для предотвращения SQL-инъекций и других атак
+    $username = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
+    $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
+    $last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+
+    // Проверка пользовательского ввода
+    if (empty($username) || empty($password) || empty($email)) {
+        // Перенаправление пользователя на страницу регистрации с сообщением об ошибке, если какое-либо обязательное поле пустое
+        header("Location: registration.html?error=empty_fields");
+        exit();
+    }
+
+    // Подключение к базе данных (замените DB_HOST, DB_USER, DB_PASSWORD и DB_NAME на соответствующие значения)
+    $mysqli = new mysqli("localhost", "root", "", "test");
+
+    // Проверка ошибок подключения
+    if ($mysqli->connect_error) {
+        // Перенаправление пользователя на страницу регистрации с сообщением об ошибке, если подключение не удалось
+        header("Location: registration.html?error=connection_failed");
+        exit();
+    }
+
+    //Проверка, не зарегистрирован ли пользователь с таким же электронным адресом или именем пользователя в базе данных
+    $sql = "SELECT * FROM users WHERE email = '$email' OR username = '$username'";
+    $result = $mysqli->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Перенаправление пользователя на страницу регистрации с сообщением об ошибке, если электронный адрес или имя пользователя уже зарегистрированы
+        header("Location: registration.html?error=email_username_exists");
+        exit();
+    }
+
+    // Хэширование пароля пользователя с использованием алгоритма bcrypt
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+    // Вставка данных пользователя в базу данных
+    $sql = "INSERT INTO users (username, password, email, first_name, last_name) VALUES ('$username', '$password_hash', '$email', '$first_name', '$last_name')";
+    if ($mysqli->query($sql) === TRUE) {
+        // Перенаправление пользователя на страницу входа с сообщением об успешной регистрации
+        header("Location: login.html?success=registration_complete");
+        exit();
+    } else {
+        // Перенаправление пользователя на страницу регистрации с сообщением об ошибке, если запрос к базе данных не выполнен
+        header("Location: register.html?error=database_error");
+        exit();
+    }
+    // Закрытие соединения с базой данных
+    $mysqli->close();
+}
+?>
+
+
+
+
+
+
+
+product.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Название товара</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="cart.html">Корзина (0)</a></li>
+		</ul>
+	</nav>
+
+	<!-- Секция с информацией о товаре -->
+	<section class="product-section">
+		<!-- Изображение товара -->
+		<img class="product-img" src="images/product_1.jpg" alt="Описание товара 1">
+
+		<!-- Информация о товаре -->
+		<div class="product-info">
+			<h2>Название товара</h2>
+			<p>Цена: 1000 руб.</p>
+			<p>Описание товара</p>
+			<button class="add-to-cart-btn">Добавить в корзину</button>
+		</div>
+	</section>
+
+	<!-- Футер сайта -->
+	<footer>
+		<p>Название магазина &copy; 2023</p>
+	</footer>
+
+	<!-- Подключение файла скриптов -->
+	<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+orders.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Мои заказы</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="login.html">Вход</a></li>
+			<li class="cart-icon"><a href="cart.html">Корзина (0)</a></li>
+			<li><a href="#">Мои заказы</a></li>
+</ul>
+</nav>
+<!-- Секция с информацией о заказах пользователя -->
+<section class="orders-section">
+	<h2>Мои заказы</h2>
+	<div class="orders-list">
+		<div class="order-item">
+			<p>Дата заказа: 27.03.2023</p>
+			<p>Название товара: Название товара 1</p>
+			<p>Количество: 2</p>
+			<p>Цена: 2000 руб.</p>
+		</div>
+		<div class="order-item">
+			<p>Дата заказа: 25.03.2023</p>
+			<p>Название товара: Название товара 3</p>
+			<p>Количество: 1</p>
+			<p>Цена: 3000 руб.</p>
+		</div>
+		<!-- здесь может быть добавлено больше заказов -->
+	</div>
+</section>
+
+<!-- Футер сайта -->
+<footer>
+	<p>Название магазина &copy; 2023</p>
+</footer>
+
+<!-- Подключение файла скриптов -->
+<script src="script.js"></script>
+</body> 
+</html>
+
+
+
+
+
+
+login.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Вход</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="register.html">Регистрация</a></li>
+		</ul>
+	</nav>
+
+	<!-- Секция с формой входа -->
+	<section class="login-section">
+		<h2>Вход</h2>
+		<form method="POST" action="login.php">
+			<label for="email">E-mail:</label><br>
+			<input type="email" id="email" name="email" required><br>
+
+			<label for="password">Пароль:</label><br>
+			<input type="password" id="password" name="password" required><br>
+
+			<button type="submit">Войти</button>
+		</form>
+	</section>
+
+	<!-- Футер сайта -->
+	<footer>
+		<p>Название магазина &copy; 2023</p>
+	</footer>
+
+	<!-- Подключение файла скриптов -->
+	<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+login.php
+
+<?php
+// Запуск сессии для сохранения данных между страницами
+session_start();
+
+// Подключение к базе данных
+$mysqli = new mysqli("localhost", "root", "", "test");
+
+// Проверка ошибок подключения
+if ($mysqli->connect_error) {
+    die("Ошибка подключения: " . $mysqli->connect_error);
+}
+
+// Обработка отправленной формы входа
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Получение параметров формы
+    $email = $mysqli->real_escape_string($_POST['email']);
+    $password = $mysqli->real_escape_string($_POST['password']);
+
+    // Поиск пользователя в базе данных
+    $sql = "SELECT * FROM users WHERE email='$email'";
+    $result = $mysqli->query($sql);
+
+    // Проверка, найден ли пользователь
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+
+        // Проверка пароля
+        if(password_verify($password, $row['password'])) {
+            // Аутентификация прошла успешно - сохранение информации о пользователе в сессии
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['UserName'] = $row['username'];
+            // Переадресация пользователя на защищенную страницу
+header("Location: index.html");
+exit();
+}
+}
+// Аутентификация не удалась - отображение сообщения об ошибке
+$error_message = "Неправильный электронный адрес или пароль.";
+}
+
+// Закрытие соединения с базой данных
+$mysqli->close();
+?>
+
+
+
+
+
+
+
+
+
+contacts.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Контакты</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="#">Контакты</a></li>
+			<li><a href="cart.html">Корзина (0)</a></li>
+		</ul>
+	</nav>
+
+	<!-- Секция с контактной информацией и формой обратной связи -->
+	<section class="contact-section">
+		<h2>Контакты</h2>
+		<div class="contact-info">
+			<p><strong>Адрес:</strong> г.Москва, ул. Примерная, д. 123, офис 456</p>
+			<p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
+			<p><strong>E-mail:</strong> info@shop.ru</p>
+			<p><strong>График работы:</strong> понедельник-пятница с 9:00 до 18:00</p>
+		</div>
+		<div class="contact-form">
+			<h3>Напишите нам</h3>
+			<form>
+				<label for="name">Имя:</label><br>
+				<input type="text" id="name" name="name"><br>
+
+				<label for="email">E-mail:</label><br>
+				<input type="email" id="email" name="email"><br>
+
+				<label for="message">Сообщение:</label><br>
+				<textarea id="message" name="message"></textarea><br>
+
+				<button type="submit">Отправить</button>
+			</form>
+		</div>
+	</section>
+
+	<!-- Футер сайта -->
+	<footer>
+		<p>Название магазина &copy; 2023</p>
+	</footer>
+
+	<!-- Подключение файла скриптов -->
+	<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+catalog.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Каталог</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="login.html">Вход</a></li>
+			<li><a href="register.html">Регистрация</a></li>
+		</ul>
+	</nav>
+
+	<!-- Секция с фильтрами и списком товаров -->
+	<section>
+		<!-- Панель поиска и фильтрации товаров -->
+		<div class="filter-panel">
+			<!-- Форма поиска товаров -->
+			<form>
+				<input type="text" placeholder="Поиск продуктов">
+				<button type="submit">Найти</button>
+			</form>
+
+			<!-- Фильтры товаров -->
+			<div class="filter-box">
+				<label>Категории:</label>
+				<select>
+					<option value="">Все</option>
+					<option value="food">Продукты питания</option>
+					<option value="cosmetic">Косметика</option>
+					<option value="cleaning">Бытовая химия</select> </div> <div class="filter-box"> <label>Цена:</label> <input type="text" placeholder="Цена от"> <span>-</span> <input type="text" placeholder="Цена до"> </div> <button class="filter-btn">Фильтровать</button> </div>
+						<!-- Список товаров -->
+	<div class="product-grid">
+		<!-- Карточки товаров -->
+		<div class="product-food">
+			<img src="images/product_1.jpg" alt="Описание товара 1">
+			<p>Название товара 1</p> <p>Цена: 1000 руб.</p> </div> <div class="product-cosmetic"> <img src="images/product_2.jpg" alt="Описание товара 2"> <p>Название товара 2</p> <p>Цена: 2000 руб.</p> </div> <div class="product-cleaning"> <img src="images/product_3.jpg" alt="Описание товара 3"> <p>Название товара 3</p> <p>Цена: 3000 руб.</p> </div> <div class="product-food"> <img src="images/product_4.jpg" alt="Описание товара 4"> <p>Название товара 4</p> <p>Цена: 4000 руб.</p> </div> <div class="product-cosmetic"> <img src="images/product_5.jpg" alt="Описание товара 5"> <p>Название товара 5</p> <p>Цена: 5000 руб.</p> </div> <div class="product-cleaning"> <img src="images/product_6.jpg" alt="Описание товара 6"> <p>Название товара 6</p> <p>Цена: 6000 руб.</p> </div> </div> </section>
+			<!-- Футер сайта -->
+<footer>
+	<p>Название магазина &copy; 2023</p>
+</footer>
+
+<!-- Подключение файла скриптов -->
+<script src="script.js"></script>
+</body> </html>
+
+
+
+
+
+cart.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - Корзина</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="about.html">О нас</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="login.html">Вход</a></li>
+			<li class="cart-icon"><a href="#">Корзина (0)</a></li>
+		</ul>
+	</nav>
+	<!-- Секция с информацией о корзине и списком выбранных товаров -->
+	<section class="cart-section">
+		<h2>Корзина покупок</h2>
+		<div class="cart-info">
+			<p>Общая стоимость: 0 руб.</p>
+			<button class="clear-cart-btn">Очистить корзину</button>
+			<button class="checkout-btn">Оформить заказ</button>
+		</div>
+		<div class="cart-items">
+			<div class="cart-item">
+				<img src="images/product_1.jpg" alt="Описание товара 1">
+				<div class="cart-item-info">
+					<h3>Название товара 1</h3>
+					<p>Цена: 1000 руб.</p>
+<label for="quantity">Количество:</label>
+<input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+<button class="remove-item-btn">Удалить из корзины</button>
+</div>
+</div>
+<div class="cart-item">
+<img src="images/product_4.jpg" alt="Описание товара 4">
+<div class="cart-item-info">
+<h3>Название товара 4</h3>
+<p>Цена: 4000 руб.</p>
+<label for="quantity">Количество:</label>
+<input type="number" id="quantity" name="quantity" value="1" min="1" max="10">
+<button class="remove-item-btn">Удалить из корзины</button>
+</div>
+</div>
+<!-- здесь может быть добавлено больше товаров -->
+</div>
+</section>
+<!-- Футер сайта -->
+<footer>
+	<p>Название магазина &copy; 2023</p>
+</footer>
+
+<!-- Подключение файла скриптов -->
+<script src="script.js"></script>
+</body> 
+</html>
+
+
+
+
+
+about.html
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Название сайта - О нас</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<!-- Верхнее меню сайта -->
+	<nav>
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="catalog.html">Каталог</a></li>
+			<li><a href="contacts.html">Контакты</a></li>
+			<li><a href="login.html">Вход</a></li>
+			<li><a href="register.html">Регистрация</a></li>
+		</ul>
+	</nav>
+
+	<!-- Секция с информацией о нашем магазине -->
+	<section>
+		<h2>Немного об нас</h2>
+		<p>Наш магазин был основан в 2023 году с целью предоставить нашим клиентам широкий ассортимент товаров высокого качества по доступной цене.</p>
+		<p>Мы специализируемся на продаже продуктов питания, бытовой химии и косметики от ведущих мировых производителей.</p>
+		<p>Мы стремимся к тому, чтобы наши клиенты получили быстрый и простой доступ к широкому выбору качественных продуктов высокой ценности.</p>
+		<p>Вы можете быть уверены, что в нашем магазине представлены только те продукты, которые мы используем и рекомендуем нашим близким и друзьям.</p>
+	</section>
+
+	<!-- Футер сайта -->
+	<footer>
+		<p>Название магазина &copy; 2023</p>
+	</footer>
+
+	<!-- Подключение файла скриптов -->
+	<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+script.js
+
+/* функция для добавления продукта в корзину */
+function addToCart(productId) {
+// получить информацию о продукте на основе его идентификатора
+var productInfo = getProductInfo(productId);
+// добавить продукт в корзину
+cart.addProduct(productInfo);
+
+// обновить информацию о корзине на странице
+updateCartInfo();
+}
+
+/* функция для обновления информации о корзине на странице */
+function updateCartInfo() {
+// получить количество выбранных продуктов
+var cartItemCount = cart.getItemCount();
+// обновить информацию о корзине на странице
+var cartIcon = document.querySelector('.cart-icon');
+cartIcon.textContent = 'Корзина (' + cartItemCount + ')';
+}
+
+/* функция для отправки формы заказа */
+function submitOrderForm() {
+// получить информацию из формы заказа
+var orderInfo = getOrderInfo();
+// создать HTTP-запрос
+var xhr = new XMLHttpRequest();
+
+// указать метод и URL запроса
+xhr.open('POST', '/submit-order.php');
+
+// заголовки запроса
+xhr.setRequestHeader('Content-Type', 'application/json');
+
+// обработчик успешного запроса
+xhr.onload = function() {
+    // показать сообщение об успешном оформлении заказа
+    showOrderConfirmation();
+};
+
+// обработчик ошибки запроса
+xhr.onerror = function() {
+    // показать сообщение об ошибке при оформлении заказа
+    showOrderError();
+};
+
+// преобразовать информацию о заказе в JSON
+var orderInfoJson = JSON.stringify(orderInfo);
+
+// отправить запрос
+xhr.send(orderInfoJson);
+}
+
+/* функция для получения информации из формы заказа */
+function getOrderInfo() {
+// получить информацию о товарах в корзине
+var cartItems = cart.getItems();
+// создать объект для хранения информации о заказе
+var orderInfo = {};
+
+// добавить информацию о товарах в заказ
+orderInfo.items = [];
+for (var i = 0; i < cartItems.length; i++) {
+    var cartItem = cartItems[i];
+    var itemInfo = {
+        'productId': cartItem.productId,
+        'quantity': cartItem.quantity
+    };
+    orderInfo.items.push(itemInfo);
+}
+
+// добавить информацию о доставке
+orderInfo.shippingInfo = {
+    'name': document.getElementById('name').value,
+    'email': document.getElementById('email').value,
+    'address': document.getElementById('address').value,
+    'phone': document.getElementById('phone').value
+};
+
+return orderInfo;
+}
+
+/* функция для показа сообщения об успешном оформлении заказа */
+function showOrderConfirmation() {
+alert('Ваш заказ успешно оформлен! Мы свяжемся с вами по указанной вами контактной информации для подтверждения заказа.');
+}
+
+/* функция для показа сообщения об ошибке при оформлении заказа */
+function showOrderError() {
+alert('Произошла ошибка при оформлении заказа. Пожалуйста, попробуйте позже или свяжитесь с нашими операторами.');
+}
+
+
+
+
+
+server.php
+
+<?php
+session_start();
+// Здесь должно происходить подключение к базе данных
+
+// Обработка добавления товара в корзину
+if ($_POST['action'] == 'add_to_cart') {
+	if (!isset($_SESSION['cart'])) {
+		$_SESSION['cart'] = array();
+	}
+
+	$id = $_POST['id'];
+	$qty = $_POST['qty'];
+
+	// Проверяем, есть ли товар в корзине
+	if (array_key_exists($id, $_SESSION['cart'])) {
+		// Если товар уже есть в корзине, увеличиваем количество на количество, выбранное пользователем
+		$_SESSION['cart'][$id] += $qty;
+	} else {
+		// Если товара еще нет в корзине, добавляем его
+		$_SESSION['cart'][$id] = $qty;
+	}
+
+	header('Location: ' . $_SERVER['HTTP_REFERER']);
+	exit();
+}
+
+// Обработка удаления товара из корзины
+if ($_POST['action'] == 'remove_from_cart') {
+	$id = $_POST['id'];
+
+	// Удаляем товар из массива корзины
+	unset($_SESSION['cart'][$id]);
+
+	header('Location: cart.php');
+	exit();
+}
+
+// Проверяем, авторизован ли пользователь
+function is_logged_in() {
+	if (isset($_SESSION['user_id'])) {
+		$user_id = $_SESSION['user_id'];
+
+		// Запрос в базу данных для проверки наличия пользователя с таким id
+		$query = "SELECT id FROM users WHERE id = $user_id";
+		$result = mysqli_query($connection, $query);
+
+		if(mysqli_num_rows($result) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		return false;
+	}
+}
+?>
+
+
+
+
+
+admin.php
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Панель администратора</title>
+	<!-- Подключение файла стилей -->
+	<link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+<body>
+	<!-- Шапка страницы -->
+	<header>
+		<h1>Панель администратора</h1>
+		<nav>
+			<ul>
+				<li><a href="#">Выйти</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Секция с продуктами -->
+	<section class="products-section">
+		<h2>Список продуктов</h2>
+		<table>
+			<tr>
+				<th>Название</th>
+				<th>Описание</th>
+				<th>Цена</th>
+				<th>Действие</th>
+			</tr>
+			<tr>
+				<td>Название продукта 1</td>
+				<td>Описание продукта 1</td>
+				<td>1000 руб.</td>
+				<td>
+					<button>Редактировать</button>
+					<button>Удалить</button>
+				</td>
+			</tr>
+			<tr>
+				<td>Название продукта 2</td>
+				<td>Описание продукта 2</td>
+				<td>2000 руб.</td>
+				<td>
+					<button>Редактировать</button>
+					<button>Удалить</button>
+				</td>
+			</tr>
+			<!-- здесь можете добавить больше продуктов -->
+		</table>
+
+		<!-- Форма для добавления продукта -->
+		<h3>Добавить новый продукт</h3>
+		<form>
+			<label for="name">Название:</label>
+			<input type="text" id="name" name="name" required><br>
+
+			<label for="description">Описание:</label>
+			<textarea id="description" name="description"></textarea><br>
+
+			<label for="price">Цена:</label>
+			<input type="text" id="price" name="price" required><br>
+
+			<button type="submit">Добавить</button>
+		</form>
+	</section>
+
+	<!-- Футер сайта -->
+	<footer>
+		<p>Название магазина &copy; 2023</p>
+	</footer>
+
+	<!-- Подключение файла скриптов -->
+	<script src="admin.js"></script>
+</body>
+</html>
+
+
+
+
+carusel.js
+
+// Добавление обработчика события "load" на объект окна
+window.addEventListener("load", () => {
+    // Выбор всех элементов с классом "carousel-3d"
+    var carousels = document.querySelectorAll(".carousel-3d");
+    // Итерирование по каждому элементу карусели
+    for (var i = 0; i < carousels.length; i++)
+    {
+    // Вызов функции "carousel" для каждого элемента карусели
+    carousel(carousels[i]);
+    }
+    });
+    
+    // Определение функции "carousel" с параметром "root"
+    function carousel(root)
+    {
+    // Определение переменных для элементов карусели
+    var figure = root.querySelector("figure"),
+    nav = root.querySelector("nav"),
+    images = figure.children,
+    n = images.length,
+    gap = root.dataset.gap || 0,
+    bfc = "bfc" in root.dataset,
+    theta = 2 * Math.PI / n,
+    currImage = 0;
+    // Вызов функции "setupCarousel" с аргументами "n" и шириной первого изображения
+    setupCarousel(n, parseFloat(getComputedStyle(images[0]).width));
+    // Добавление обработчика события "resize" на объект окна
+    window.addEventListener("resize", () =>
+    {
+    // Вызов функции "setupCarousel" с аргументами "n" и шириной первого изображения при изменении размеров окна
+    setupCarousel(n, parseFloat(getComputedStyle(images[0]).width));
+    });
+    // Вызов функции "setupNavigation"
+setupNavigation();
+
+// Определение функции "setupCarousel" с параметрами "n" и "s"
+function setupCarousel(n, s) 
+{
+    // Рассчет apothem в соответствии с заданной формулой
+    var apothem = s / (2 * Math.tan(Math.PI / n));
+    // Установка точки преобразования для фигуры
+    figure.style.transformOrigin = `50% 50% ${-apothem}px`;
+    // Установка отступов для каждого изображения
+    for (var i = 0; i < n; i++) images[i].style.padding = `0 ${gap}px`;
+    // Преобразование каждого изображения
+    for (i = 0; i < n; i++) 
+    {
+        images[i].style.transformOrigin = `50% 50% ${-apothem}px`;
+        images[i].style.transform = `rotateY(${i * theta}rad)`;
+    }
+
+    // Если значение bfc равно true, скрытие обратной стороны каждого элемента
+    if (bfc)
+    for (i = 0; i < n; i++) images[i].style.backfaceVisibility = "hidden";
+    // Вызов функции "rotateCarousel" с аргументом "currImage"
+    rotateCarousel(currImage);
+}
+
+// Определение функции "setupNavigation"
+function setupNavigation() 
+{
+    // Добавление обработчика события "click" на элемент навигации
+    nav.addEventListener("click", onClick, true);
+    // Определение функции обработки события "click"
+    function onClick(e) 
+    {
+        e.stopPropagation();
+        var t = e.target;
+        // Проверка, является ли нажатый элемент кнопкой
+        if (t.tagName.toUpperCase() != "BUTTON") return;
+        // Если нажата кнопка "next", увеличение значения "currImage", иначе - уменьшение
+        if (t.classList.contains("next")) 
+        {
+            currImage++;
+        } 
+        else 
+        {
+            currImage--;
+        }
+        // Вызов функции "rotateCarousel" с аргументом "currImage"
+        rotateCarousel(currImage);
+    }
+}
+
+// Определение функции "rotateCarousel" с параметром "imageIndex"
+function rotateCarousel(imageIndex) 
+{
+    // Вращение фигуры на угол, пропорциональный "imageIndex"
+    figure.style.transform = `rotateY(${imageIndex * -theta}rad)`;
+}
+}
+
+
+
+
+
+запросы.txt
+
+CREATE TABLE users (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL,
+  password CHAR(60) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  first_name VARCHAR(50) DEFAULT NULL,
+  last_name VARCHAR(50) DEFAULT NULL,
+  PRIMARY KEY (id),
+  UNIQUE KEY username (username),
+  UNIQUE KEY email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE products (
+  id INT(11) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  price DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO products (name, description, price) VALUES
+  ('Название продукта 1', 'Описание продукта 1', '1000.00'),
+  ('Название продукта 2', 'Описание продукта 2', '2000.00'),
+  ('Название продукта 3', 'Описание продукта 3', '3000.00'),
+  ('Название продукта 4', 'Описание продукта 4', '4000.00'),
+  ('Название продукта 5', 'Описание продукта 5', '5000.00'),
+  ('Название продукта 6', 'Описание продукта 6', '6000.00');
