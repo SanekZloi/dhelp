@@ -1052,6 +1052,242 @@ function rotateCarousel(imageIndex)
 
 
 
+style.css
+
+/* общие стили для всего сайта */
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: Arial, sans-serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column; /* контент будет располагаться в колонку*/
+  }
+  
+  main {
+	flex-grow: 1; /* контент должен растянуться на всю возможную высоту между верхним меню и футером */
+  }
+  
+  footer {
+	margin-top: auto; /* футер всегда будет прижат к нижней части экрана */
+  }
+
+nav {
+	 display: flex;
+ 	 align-items: center;
+  	 justify-content: space-between;
+ 	 height: 80px;
+ 	 padding: 0 50px;
+ 	 background-color: #333;
+ 	 color: #fff;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: flex-end;
+}
+
+nav li {
+	margin: 0 10px;
+	padding: 5px;
+}
+
+nav a {
+	color: #fff;
+	text-decoration: none;
+}
+
+/* стили для секции с новыми товарами */
+section:nth-of-type(2) {
+	padding: 20px;
+}
+
+h2 {
+	margin-bottom: 20px;
+}
+
+.carousel-item img {
+	max-width: 100%;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+	background-image: none;
+}
+
+.carousel-control-prev, .carousel-control-next {
+	width: auto;
+}
+
+.product-grid {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.product {
+	width: 30%;
+	margin-bottom: 20px;
+	padding: 10px;
+	border: 1px solid #ccc;
+}
+
+.product img {	max-width: 100%;
+}
+
+.product p {
+	margin: 10px 0;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 20px 0;
+}
+
+/* стили для адаптивности */
+@media screen and (max-width: 768px) {
+	nav {
+	  flex-direction: column;
+	  align-items: flex-start;
+	  height: auto;
+	  padding: 20px;
+	}
+
+	.logo-container {
+		margin-bottom: 20px;
+	  }
+
+	nav li {
+		margin: 10px 0;
+	}
+
+	.product {
+		width: 45%;
+	}
+
+	section {
+		margin: 20px 0;
+	}
+
+	.carousel-control-prev, .carousel-control-next {
+		width: 15%;
+	}
+}
+
+/* слейдер в index.html */
+.carousel-3d {
+    padding: 20px; /* внутренний отступ слайдера */
+    -webkit-perspective: 500px; /* устанавливаем перспективу для 3D-эффекта (для браузеров, использующих WebKit) */
+    perspective: 500px; /* устанавливаем перспективу для 3D-эффекта (для остальных браузеров) */
+    display: flex; /* устанавливаем элементы контейнера в виде строки (т.е. горизонтально) */
+    flex-direction: column; /* меняем направление контейнера на вертикальное */
+    align-items: center; /* выравниваем элементы по центру */
+    overflow: hidden; /* устанавливаем скрытие содержимого, которое выходит за пределы слайдера */
+}
+
+.carousel-3d > * {
+    flex: 0 0 auto; /* устанавливаем элементам контейнера фиксированный размер */
+}
+
+.carousel-3d figure {
+    margin: 0; /* отступы внутри блока */
+    width: 50%; /* ширина блока с отображением контента */
+    -webkit-transform-style: preserve-3d; /* устанавливаем стиль трансформации 3D-эффекта (для браузеров, использующих WebKit) */
+    transform-style: preserve-3d; /* устанавливаем стиль трансформации 3D-эффекта (для остальных браузеров) */
+    transition: -webkit-transform 0.5s; /* задаем плавное изменение сведства преобразования (для браузеров, использующих WebKit) */
+	transition: transform 0.5s; /* задаем плавное изменение свойства преобразования (для остальных браузеров) */
+	transition: transform 0.5s, -webkit-transform 0.5s; /* объединяем два предыдущих свойства (для браузеров, использующих WebKit) */
+	}
+
+.carousel-3d figure img,
+.carousel-3d figure div {
+width: 100%; /* ширина изображений (максимальная ширина элементов, содержащих изображения) */
+height: 100%; /* высота изображений (максимальная высота элементов, содержащих изображения) */
+box-sizing: border-box; /* устанавливаем заданные размеры с учетом границ и отступов элементов */
+padding: 0; /* отменяем отступы внутри элементов, содержащих изображения */
+}
+
+.carousel-3d figure div:not(:first-of-type),
+.carousel-3d figure img:not(:first-of-type) {
+position: absolute; /* устанавливаем положение элементов, содержащих изображения, в абсолютных координатах */
+left: 0; /* расположение элементов слева */
+top: 0; /* расположение элементов сверху */
+}
+
+/* Стили для кнопок управления слайдером */
+.carousel-3d nav {
+display: flex; /* устанавливаем элементы контейнера в виде строки (т.е. горизонтально) */
+justify-content: center; /* выравниваем элементы по центру */
+margin: 20px 0 0; /* внешний отступ для контейнера */
+}
+
+.carousel-3d nav button {
+flex: 0 0 auto; /* устанавливаем кнопкам фиксированный размер */
+margin: 0 5px; /* зазор между кнопками */
+cursor: pointer; /* устанавливаем курсор "указатель" на кнопки */
+color: #337AB7; /* цвет текста на кнопках */
+background: #BFE2FF; /* фон кнопок */
+border: 1px solid #337AB7; /* границы кнопок */
+padding: 5px 10px; /* отступы внутри кнопок */
+font-weight: bold; /* жирный шрифт для текста на */
+transition: all .3s ease;
+}
+
+.carousel-3d nav button:hover {
+    color: #FFF; /* цвет текста на кнопке при наведении */
+    background-color: #337AB7; /* цвет фона кнопки при наведении */
+}
+	
+	/* Стили для элемента, отображающего подпись к изображению */
+	.ggwp {
+	color: #fff; /* цвет текста */
+	opacity: 0%; /* непрозрачность элемента */
+	border-radius: 2px; /* радиус скругления углов */
+	position: absolute; /* устанавливаем положение элемента на странице в абсолютных координатах */
+	right: 0; /* расположение элемента справа */
+	bottom: 10px; /* расположение элемента снизу */
+	font-size: 18px; /* размер шрифта */
+	padding: 3px 5px; /* внутренние отступы внутри элемента */
+	line-height: 0px; /* высота строки - 0px */
+	}
+	
+	.ggwp:hover{
+	color: #fff; /* цвет текста принаведении */
+	opacity: 100%; /* непрозрачность элемента при наведении */
+	border-radius: 2px; /* радиус скругления углов */
+	position: absolute; /* устанавливаем положение элемента на странице в абсолютных координатах */
+	right: 0; /* расположение элемента справа */
+	bottom: 10px; /* расположение элемента снизу */
+	font-size: 18px; /* размер шрифта */
+	padding: 3px 5px; /* внутренние отступы внутри элемента */
+	line-height: 0px; /* высота строки - 0px */
+	}
+/* Стили для элемента с дополнительным текстом на слайде */
+	.text {
+	box-sizing: border-box; /* устанавливаем размеры блока с учетом его границ и отступов */
+	position: absolute; /* устанавливаем положение блока на странице в абсолютных координатах */
+	background: rgba(46,45,45,0.9); /* цвет фона блока */
+	top: 40%; /* расположение блока сверху */
+	width: 870px; /* ширина блока */
+	height: 180px; /* высота блока */
+	padding: 40px 40px; /* внутренние отступы внутри блока */
+	transition: 0.5s; /* плавное изменение свойств блока на протяжении 0.5 секунды */
+	opacity: 0%; /* непрозрачность блока */
+	color: white; /* цвет текста */
+}
+	.text:hover {
+	opacity: 100%; /* непрозрачность блока при наведении */
+}
+ /* конец слайдера в index.html */
+
+
 
 
 запросы.txt
